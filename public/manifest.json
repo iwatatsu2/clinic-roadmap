@@ -1,0 +1,21 @@
+{
+  "name": "木更津クリニック開業",
+  "short_name": "木更津開業",
+  "description": "木更津クリニック開業ロードマップ 夫婦共有版",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
