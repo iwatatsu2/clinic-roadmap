@@ -34,10 +34,13 @@ export const PHASES: Phase[] = [
 
 export const TASKS: Task[] = [
   // 【医師】戦略・分析
-  { id: "t1", category: "【医師】戦略・分析", name: "人口動態分析", owner: "夫", progress: 0, status: "未着手", note: "木更津市統計" },
-  { id: "t2", category: "【医師】戦略・分析", name: "糖尿病患者推計", owner: "夫", progress: 0, status: "未着手", note: "13,600人推計" },
+  { id: "t1", category: "【医師】戦略・分析", name: "人口動態分析", owner: "夫", progress: 50, status: "進行中", note: "増田先生と協議・木更津市統計" },
+  { id: "t2", category: "【医師】戦略・分析", name: "糖尿病患者推計", owner: "夫", progress: 50, status: "進行中", note: "13,600人推計（増田先生情報）" },
   { id: "t3", category: "【医師】戦略・分析", name: "競合クリニック全件マッピング", owner: "夫", progress: 0, status: "未着手" },
   { id: "t4", category: "【医師】戦略・分析", name: "診療単価調査", owner: "夫", progress: 0, status: "未着手", note: "6,000円想定" },
+  // 【医師】診療コンセプト
+  { id: "t0a", category: "【医師】診療コンセプト", name: "診療コンセプト決定", owner: "夫/妻", progress: 100, status: "完了", note: "糖尿病・内分泌内科特化型" },
+  { id: "t0b", category: "【医師】診療コンセプト", name: "ビジョン夫婦共有", owner: "夫/妻", progress: 80, status: "進行中", note: "増田先生・野見山先生に共有済。三浦先生に確認中" },
   // 【医師】財務・計画
   { id: "t5", category: "【医師】財務・計画", name: "収益モデル試算", owner: "夫", progress: 0, status: "未着手", note: "月売上300万目標" },
   { id: "t6", category: "【医師】財務・計画", name: "5年事業計画書作成", owner: "夫", progress: 0, status: "未着手" },
