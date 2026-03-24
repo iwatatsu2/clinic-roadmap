@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { PHASES, TASKS, PERIODS, type Owner, type Status } from "@/data/roadmap";
+import { PHASES, TASKS, PERIODS, PROPERTY, MEETINGS, type Owner, type Status } from "@/data/roadmap";
 
 const OWNER_COLOR: Record<Owner, string> = {
   "夫": "bg-blue-600",
@@ -25,7 +25,7 @@ const STATUS_NEXT: Record<Status, Status> = {
 
 type Overrides = Record<string, { status?: Status; progress?: number }>;
 type Notes = Record<string, string>;
-type Tab = "タスク" | "ガント";
+type Tab = "タスク" | "ガント" | "物件・予定";
 
 function periodIndex(p: string) { return PERIODS.indexOf(p); }
 
@@ -108,7 +108,7 @@ export default function Home() {
         </div>
         {/* Tab bar */}
         <div className="flex px-4 gap-1 pb-2 mt-1">
-          {(["タスク", "ガント"] as Tab[]).map(t => (
+          {(["タスク", "ガント", "物件・予定"] as Tab[]).map(t => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -275,7 +275,70 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <p className="text-center text-xs text-slate-300 mt-4">目標：2029年春開業</p>
+          <p className="text-center text-xs text-slate-300 mt-4">🎯 目標：2027年9月初旬開院</p>
+        </div>
+      )}
+
+      {tab === "物件・予定" && (
+        <div className="px-4 pt-4 space-y-4 pb-20">
+
+          {/* 直近の予定 */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="px-4 py-3 bg-amber-50 flex items-center justify-between">
+              <h3 className="font-bold text-sm text-slate-700">📅 直近の予定</h3>
+            </div>
+            <div className="divide-y divide-slate-50">
+              {MEETINGS.filter(m => m.status !== "キャンセル").map(m => (
+                <div key={m.id} className="px-4 py-3 flex items-start gap-3">
+                  <div className="shrink-0 text-center bg-amber-100 rounded-xl px-2 py-1 min-w-[52px]">
+                    <p className="text-xs font-bold text-amber-700">{m.date.slice(5).replace("-", "/")}</p>
+                    {m.time && <p className="text-xs text-amber-600">{m.time}</p>}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-slate-800">{m.title}</p>
+                    <p className="text-xs text-slate-400">{m.partner}</p>
+                    {m.note && <p className="text-xs text-slate-400 mt-0.5">{m.note}</p>}
+                  </div>
+                  <span className={`shrink-0 text-xs px-2 py-0.5 rounded-full font-medium ${m.status === "完了" ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}>
+                    {m.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 物件情報 */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="px-4 py-3 bg-green-50">
+              <h3 className="font-bold text-sm text-slate-700">🏥 物件情報</h3>
+            </div>
+            <div className="px-4 py-3 space-y-2 text-sm">
+              <div className="flex gap-2"><span className="text-slate-400 shrink-0 w-20">物件名</span><span className="font-semibold text-slate-800">{PROPERTY.name}</span></div>
+              <div className="flex gap-2"><span className="text-slate-400 shrink-0 w-20">所在地</span><span className="text-slate-700">{PROPERTY.address}</span></div>
+              <div className="flex gap-2"><span className="text-slate-400 shrink-0 w-20">面積</span><span className="text-slate-700">{PROPERTY.area}</span></div>
+              <div className="flex gap-2"><span className="text-slate-400 shrink-0 w-20">総費用</span><span className="font-semibold text-blue-700">{PROPERTY.totalCost}</span></div>
+              <div className="flex gap-2"><span className="text-slate-400 shrink-0 w-20">施工</span><span className="text-slate-700">{PROPERTY.builder}</span></div>
+              <div className="flex gap-2"><span className="text-slate-400 shrink-0 w-20">補助金</span><span className="text-green-700 text-xs">{PROPERTY.subsidy}</span></div>
+              <div className="flex gap-2"><span className="text-slate-400 shrink-0 w-20">開院目標</span><span className="font-bold text-rose-600">{PROPERTY.openingTarget}</span></div>
+            </div>
+          </div>
+
+          {/* 建設スケジュール */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="px-4 py-3 bg-blue-50">
+              <h3 className="font-bold text-sm text-slate-700">🏗️ 建設スケジュール（三井ホーム）</h3>
+            </div>
+            <div className="divide-y divide-slate-50">
+              {PROPERTY.scheduleHighlights.map((s, i) => (
+                <div key={i} className="px-4 py-2.5 flex items-center gap-3">
+                  <div className={`w-2 h-2 rounded-full shrink-0 ${s.label.includes("🎯") ? "bg-rose-500" : "bg-blue-300"}`} />
+                  <span className="text-xs text-slate-400 w-32 shrink-0">{s.date}</span>
+                  <span className={`text-sm ${s.label.includes("🎯") ? "font-bold text-rose-600" : "text-slate-700"}`}>{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       )}
 
