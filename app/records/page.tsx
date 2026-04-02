@@ -101,22 +101,18 @@ export default function RecordsPage() {
           <article key={rec.id} className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
             {/* Record Header */}
             <div className="bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-4">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-blue-100 text-xs mb-1">{rec.date} ／ {rec.partner}</p>
-                  <h2 className="text-white font-bold text-lg leading-tight">{rec.title}</h2>
-                </div>
-                {rec.fileRef && (
-                  <span className="text-blue-200 text-xs whitespace-nowrap mt-1">📁 {rec.fileRef}</span>
-                )}
-              </div>
+              <p className="text-blue-100 text-xs mb-1">{rec.date} ／ {rec.partner}</p>
+              <h2 className="text-white font-bold text-base leading-snug">{rec.title}</h2>
+              {rec.fileRef && (
+                <p className="text-blue-200 text-xs mt-2 break-all">📁 {rec.fileRef}</p>
+              )}
             </div>
 
             <div className="p-6 space-y-6">
               {/* Summary */}
               <section>
                 <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">概要</h3>
-                <p className="text-slate-700 text-sm leading-relaxed">{rec.summary}</p>
+                <p className="text-slate-700 text-sm leading-relaxed break-words">{rec.summary}</p>
               </section>
 
               {/* Pain Points */}
@@ -130,7 +126,7 @@ export default function RecordsPage() {
                         {pp.items.map((item, j) => (
                           <li key={j} className="text-slate-600 text-sm flex gap-2">
                             <span className="text-slate-400 flex-shrink-0">・</span>
-                            <span>{item}</span>
+                            <span className="break-words min-w-0">{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -150,7 +146,7 @@ export default function RecordsPage() {
                         {ex.items.map((item, j) => (
                           <li key={j} className="text-slate-600 text-sm flex gap-2">
                             <span className="text-slate-400 flex-shrink-0">・</span>
-                            <span>{item}</span>
+                            <span className="break-words min-w-0">{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -169,8 +165,8 @@ export default function RecordsPage() {
                         {todo.done ? "✓" : ""}
                       </span>
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm ${todo.done ? "line-through text-slate-400" : "text-slate-700"}`}>{todo.text}</p>
-                        <p className="text-xs text-slate-400 mt-0.5">担当: {todo.assignee}</p>
+                        <p className={`text-sm break-words ${todo.done ? "line-through text-slate-400" : "text-slate-700"}`}>{todo.text}</p>
+                        <p className="text-xs text-slate-400 mt-0.5 break-words">担当: {todo.assignee}</p>
                       </div>
                     </div>
                   ))}
@@ -188,7 +184,7 @@ export default function RecordsPage() {
                     {rec.aiSuggestions.map((s, i) => (
                       <div key={i} className="flex gap-3 p-3 bg-purple-50 rounded-lg">
                         <span className="text-purple-400 font-mono text-xs flex-shrink-0 mt-0.5">{String(i + 1).padStart(2, "0")}</span>
-                        <p className="text-slate-700 text-sm leading-relaxed">{s}</p>
+                        <p className="text-slate-700 text-sm leading-relaxed break-words min-w-0">{s}</p>
                       </div>
                     ))}
                   </div>
