@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { PHASES, TASKS, PERIODS, PROPERTY, MEETINGS, type Owner, type Status } from "@/data/roadmap";
+import Link from "next/link";
+import { PHASES, TASKS, PERIODS, PROPERTY, MEETINGS, LAND_CANDIDATES, LOCAL_AGENTS, type Owner, type Status } from "@/data/roadmap";
 
 const OWNER_COLOR: Record<Owner, string> = {
   "夫": "bg-blue-600",
@@ -117,6 +118,12 @@ export default function Home() {
               {t}
             </button>
           ))}
+          <Link
+            href="/records"
+            className="flex-1 py-2 rounded-xl text-sm font-medium text-slate-500 text-center hover:bg-slate-100 transition-all"
+          >
+            相談記録
+          </Link>
         </div>
       </div>
 
@@ -326,7 +333,7 @@ export default function Home() {
           {/* 建設スケジュール */}
           <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div className="px-4 py-3 bg-blue-50">
-              <h3 className="font-bold text-sm text-slate-700">🏗️ 建設スケジュール（三井ホーム）</h3>
+              <h3 className="font-bold text-sm text-slate-700">🏗️ 建設スケジュール（目標）</h3>
             </div>
             <div className="divide-y divide-slate-50">
               {PROPERTY.scheduleHighlights.map((s, i) => (
@@ -334,6 +341,60 @@ export default function Home() {
                   <div className={`w-2 h-2 rounded-full shrink-0 ${s.label.includes("🎯") ? "bg-rose-500" : "bg-blue-300"}`} />
                   <span className="text-xs text-slate-400 w-32 shrink-0">{s.date}</span>
                   <span className={`text-sm ${s.label.includes("🎯") ? "font-bold text-rose-600" : "text-slate-700"}`}>{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 土地候補リスト */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="px-4 py-3 bg-emerald-50">
+              <h3 className="font-bold text-sm text-slate-700">📍 土地候補リスト</h3>
+              <p className="text-xs text-slate-400 mt-0.5">Manusレポート（2026/3/27）より</p>
+            </div>
+            <div className="divide-y divide-slate-100">
+              {LAND_CANDIDATES.map(land => (
+                <details key={land.id} className="group">
+                  <summary className="px-4 py-3 flex items-center gap-3 cursor-pointer list-none active:bg-slate-50">
+                    <span className={`shrink-0 text-xs px-2 py-0.5 rounded-full font-bold ${land.rank === "最有力" ? "bg-rose-100 text-rose-700" : land.rank === "候補" ? "bg-amber-100 text-amber-700" : "bg-slate-100 text-slate-500"}`}>
+                      {land.rank}
+                    </span>
+                    <span className="flex-1 text-sm font-semibold text-slate-800">{land.name}</span>
+                    <span className="text-slate-300 text-xs group-open:rotate-180 transition-transform">▼</span>
+                  </summary>
+                  <div className="px-4 pb-4 space-y-1.5 bg-slate-50 text-xs text-slate-600">
+                    <div className="flex gap-2 pt-2"><span className="text-slate-400 w-16 shrink-0">所在地</span><span>{land.address}</span></div>
+                    <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">面積</span><span className="font-semibold">{land.area}</span></div>
+                    <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">価格</span><span className="font-bold text-blue-700">{land.price}</span></div>
+                    <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">接道</span><span>{land.road}</span></div>
+                    <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">用途地域</span><span>{land.zoning}</span></div>
+                    <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">ハザード</span><span>{land.hazard}</span></div>
+                    <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">競合</span><span>{land.rival}</span></div>
+                    <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">情報源</span><span>{land.source}</span></div>
+                    {land.contact && <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">連絡先</span><span className="text-blue-600">{land.contact}</span></div>}
+                    <div className="mt-2 p-2 bg-white rounded-xl border border-slate-100 text-slate-600 leading-relaxed">{land.note}</div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+
+          {/* 地元不動産業者リスト */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="px-4 py-3 bg-violet-50">
+              <h3 className="font-bold text-sm text-slate-700">🏢 地元不動産業者リスト</h3>
+              <p className="text-xs text-slate-400 mt-0.5">問い合わせ時「医療用ロードサイド300坪・木更津or袖ケ浦」と伝える</p>
+            </div>
+            <div className="divide-y divide-slate-100">
+              {LOCAL_AGENTS.map(agent => (
+                <div key={agent.rank} className="px-4 py-3 flex items-start gap-3">
+                  <div className="shrink-0 w-7 h-7 rounded-full bg-violet-100 flex items-center justify-center text-xs font-bold text-violet-700">{agent.rank}</div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-slate-800">{agent.name}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{agent.feature}</p>
+                    <p className="text-xs text-violet-600 mt-1">▶ {agent.focus}</p>
+                    <p className="text-xs text-blue-500 mt-0.5">{agent.contact}</p>
+                  </div>
                 </div>
               ))}
             </div>
