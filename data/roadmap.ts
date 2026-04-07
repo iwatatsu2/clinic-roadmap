@@ -217,7 +217,7 @@ export const MEETINGS: Meeting[] = [
 export const LAND_CANDIDATES: LandCandidate[] = [
   {
     id: "l1",
-    rank: "最有力",
+    rank: "候補",
     name: "袖ケ浦市横田（国道409号沿い）",
     address: "千葉県袖ケ浦市横田3662",
     area: "989㎡（約299坪）",
@@ -233,7 +233,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
   },
   {
     id: "l6",
-    rank: "最有力",
+    rank: "参考",
     name: "袖ケ浦二丁目（三井ホームプロデュース）",
     address: "千葉県袖ケ浦市袖ケ浦二丁目",
     area: "②区画 367坪",
@@ -244,12 +244,12 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     rival: "袖ケ浦デンタルクリニックと道を挟んで隣接",
     source: "メディセオ 山崎忍氏・三井ホームプロデュース",
     contact: "メディセオ山崎氏: 090-6910-5732",
-    note: "金田東と同一地主。袖ケ浦市＝君津医療圏内・補助金対象✅。367坪と広さ十分。ハザードマップ確認が最優先アクション",
+    note: "⛔ ハザードマップにかかることが判明（2026/04/07）→ 有力候補から除外。参考情報として残す。",
     mapUrl: "https://maps.google.com/maps?q=千葉県袖ケ浦市袖ケ浦二丁目",
   },
   {
     id: "l7",
-    rank: "候補",
+    rank: "最有力",
     name: "ウエルシア木更津高柳店 隣地",
     address: "木更津市高柳2-3-27 向かい北側空き地",
     area: "未確認（要問い合わせ）",
