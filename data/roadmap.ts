@@ -15,6 +15,7 @@ export interface LandCandidate {
   source: string;
   contact?: string;
   note: string;
+  mapUrl?: string;
 }
 
 export interface LocalAgent {
@@ -227,6 +228,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     source: "ハウスドゥ木更津北（有限会社グリーンエース）",
     contact: "TEL: 0438-97-5036",
     note: "更地・確定測量済・即引渡可。ウエルシア薬局が徒歩5分圏内で処方箋連携期待。⚠️埋蔵文化財包蔵地内のため建築前調査要（期間・費用確認必須）",
+    mapUrl: "https://maps.google.com/maps?q=千葉県袖ケ浦市横田3662",
   },
   {
     id: "l6",
@@ -242,6 +244,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     source: "メディセオ 山崎忍氏・三井ホームプロデュース",
     contact: "メディセオ山崎氏: 090-6910-5732",
     note: "金田東と同一地主。袖ケ浦市＝君津医療圏内・補助金対象✅。367坪と広さ十分。ハザードマップ確認が最優先アクション",
+    mapUrl: "https://maps.google.com/maps?q=千葉県袖ケ浦市袖ケ浦二丁目",
   },
   {
     id: "l7",
@@ -257,6 +260,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     source: "メディセオ 山崎忍氏",
     contact: "メディセオ山崎氏: 090-6910-5732",
     note: "270号沿い・既存住宅地あり・整形地確保の可否が判断の鍵。交渉物件のため条件は未確定",
+    mapUrl: "https://maps.google.com/maps?q=千葉県木更津市高柳2-3-27",
   },
   {
     id: "l8",
@@ -272,6 +276,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     source: "メディセオ 山崎忍氏・Kudoカンパニー",
     contact: "メディセオ山崎氏: 090-6910-5732",
     note: "かずさのお風呂（Kudoカンパニー経営）・みるみる内科・とみざわ薬局が隣接。生活動線上の好立地だが、ほたるの内科と至近なのが最大の懸念",
+    mapUrl: "https://maps.google.com/maps?q=木更津市清見台南5-1-40",
   },
   {
     id: "l2",
@@ -287,6 +292,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     source: "立和コーポレーション（物件番号: BLC31519）",
     contact: "https://www.tatsuwa.com/",
     note: "視認性◎。面積が300坪に満たないため隣接地追加取得か設計工夫が必要。類似の非公開物件紹介も依頼推奨",
+    mapUrl: "https://maps.google.com/maps?q=木更津市巌根",
   },
   {
     id: "l3",
@@ -301,6 +307,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     rival: "ほたるのセントラル内科まで約2〜3km確保可能",
     source: "三井ホーム・地元業者（サンワエステート等）",
     note: "人口増加中の新興住宅地。ファミリー層多くイオン木更津近接。まとまった事業用地が出にくいため業者への積極的な働きかけが必要",
+    mapUrl: "https://maps.google.com/maps?q=木更津市請西南",
   },
   {
     id: "l4",
@@ -315,6 +322,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     rival: "糖尿病・内分泌専門クリニック実質不在（ブルーオーシャン）",
     source: "地元業者（サンワエステート等）",
     note: "袖ケ浦市内に糖尿病専門医が少なく早期集患が期待できる。木更津市境に近く両市の患者取り込み可。国道16号直沿いは工業地域が多く一本入った道路が現実的",
+    mapUrl: "https://maps.google.com/maps?q=袖ケ浦市蔵波台",
   },
   {
     id: "l5",
@@ -329,6 +337,7 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     rival: "蔵波台ハートクリニックから約1km",
     source: "ハウスドゥ",
     note: "面積が大幅不足のため単独利用は困難。蔵波エリアの地価水準の参考として活用。隣接地との合筆や類似物件探索の足がかりに",
+    mapUrl: "https://maps.google.com/maps?q=千葉県袖ケ浦市蔵波",
   },
 ];
 

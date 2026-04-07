@@ -373,6 +373,11 @@ export default function Home() {
                     <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">情報源</span><span>{land.source}</span></div>
                     {land.contact && <div className="flex gap-2"><span className="text-slate-400 w-16 shrink-0">連絡先</span><span className="text-blue-600">{land.contact}</span></div>}
                     <div className="mt-2 p-2 bg-white rounded-xl border border-slate-100 text-slate-600 leading-relaxed">{land.note}</div>
+                    {land.mapUrl && (
+                      <a href={land.mapUrl} target="_blank" rel="noopener noreferrer" className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-white bg-emerald-500 hover:bg-emerald-600 px-3 py-1.5 rounded-lg w-fit">
+                        🗺️ Googleマップで見る
+                      </a>
+                    )}
                   </div>
                 </details>
               ))}
