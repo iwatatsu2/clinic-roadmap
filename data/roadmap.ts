@@ -16,6 +16,7 @@ export interface LandCandidate {
   contact?: string;
   note: string;
   mapUrl?: string;
+  pdfUrl?: string;
 }
 
 export interface LocalAgent {
@@ -338,6 +339,38 @@ export const LAND_CANDIDATES: LandCandidate[] = [
     source: "ハウスドゥ",
     note: "面積が大幅不足のため単独利用は困難。蔵波エリアの地価水準の参考として活用。隣接地との合筆や類似物件探索の足がかりに",
     mapUrl: "https://maps.google.com/maps?q=千葉県袖ケ浦市蔵波",
+  },
+  {
+    id: "l9",
+    rank: "参考",
+    name: "ヤックスドラッグ木更津文京店 隣地",
+    address: "千葉県木更津市文京3-347-1 隣地",
+    area: "未確認",
+    price: "未確認（交渉物件）",
+    road: "文京周辺道路",
+    zoning: "未確認",
+    hazard: "個別確認要",
+    rival: "大田山クリニックと車3分",
+    source: "メディセオ 山崎忍氏",
+    note: "向かいに西松屋。レンタカー店舗（日進レンタカー）が現在運営中のため土地取得のタイミング要確認。競合（大田山クリニック）が近いのが懸念",
+    mapUrl: "https://maps.google.com/maps?q=千葉県木更津市文京3-347-1",
+    pdfUrl: "/land-docs/木更津文京_ヤックスドラッグ隣地.pdf",
+  },
+  {
+    id: "l10",
+    rank: "参考",
+    name: "請西東エリア",
+    address: "木更津市請西東",
+    area: "未確認",
+    price: "未確認",
+    road: "未確認",
+    zoning: "未確認",
+    hazard: "内陸側・個別確認要",
+    rival: "未確認",
+    source: "三井ホーム・地元業者",
+    note: "自宅建設候補地とも重なり関心あり。土地情報資料あり",
+    mapUrl: "https://maps.google.com/maps?q=木更津市請西東",
+    pdfUrl: "/land-docs/請西東_土地情報.pdf",
   },
 ];
 

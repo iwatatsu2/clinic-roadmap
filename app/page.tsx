@@ -386,6 +386,19 @@ export default function Home() {
                         />
                       </div>
                     )}
+                    {land.pdfUrl && (
+                      <div className="mt-3">
+                        <p className="text-xs text-slate-400 mb-1">📄 物件資料</p>
+                        <iframe
+                          src={land.pdfUrl}
+                          width="100%"
+                          height="400"
+                          className="rounded-xl border border-slate-200"
+                          style={{ border: 0 }}
+                        />
+                        <a href={land.pdfUrl} target="_blank" rel="noopener noreferrer" className="mt-1 text-xs text-blue-500 underline block">別タブで開く</a>
+                      </div>
+                    )}
                   </div>
                 </details>
               ))}
